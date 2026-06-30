@@ -1,4 +1,5 @@
 module.exports = (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.status(200).json({
     name: 'The Grand Vista API',
     version: '1.0.0',

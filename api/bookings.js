@@ -2,6 +2,12 @@ const connectDB = require('./_lib/db');
 const Booking = require('./_lib/models/Booking');
 
 module.exports = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  if (req.method === 'OPTIONS') return res.status(200).end();
+
   await connectDB();
 
   if (req.method === 'GET') {
