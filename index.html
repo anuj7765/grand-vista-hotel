@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Grand Vista - Luxury Hotel & Resort</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <a href="#" class="logo">The Grand Vista</a>
+      <nav class="navbar">
+        <ul id="nav-menu">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Welcome to The Grand Vista</h1>
+      <p>Experience timeless luxury where every moment becomes a cherished memory.</p>
+      <a href="#rooms" class="btn btn-primary">Explore Rooms</a>
+      <a href="#contact" class="btn btn-secondary">Book Now</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Us</h2>
+        <p>Discover a world of elegance and comfort</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600" alt="Hotel Lobby">
+        </div>
+        <div class="about-text">
+          <h3>A Legacy of Excellence</h3>
+          <p>Nestled in the heart of the city, The Grand Vista has been a beacon of hospitality for over three decades. Our commitment to personalized service and attention to detail sets us apart.</p>
+          <p>From our award-winning restaurant to our world-class spa, every aspect of your stay is crafted to exceed expectations. We pride ourselves on creating an environment where luxury meets comfort.</p>
+          <div class="about-stats">
+            <div><span>30+</span> Years of Service</div>
+            <div><span>500+</span> Luxurious Rooms</div>
+            <div><span>98%</span> Guest Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooms -->
+  <section id="rooms" class="section bg-light">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Rooms</h2>
+        <p>Find the perfect space for your stay</p>
+      </div>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400" alt="Deluxe Room">
+          <div class="room-info">
+            <h3>Deluxe Room</h3>
+            <p>Elegant comfort with stunning city views.</p>
+            <div class="room-details">
+              <span><i class="fas fa-wifi"></i> Free WiFi</span>
+              <span><i class="fas fa-snowflake"></i> AC</span>
+              <span><i class="fas fa-tv"></i> Smart TV</span>
+            </div>
+            <p class="room-price">₹15,999 <small>/ night</small></p>
+            <a href="#" class="btn btn-primary book-btn" data-room="Deluxe Room" data-price="15999" data-image="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400">Book Now</a>
+          </div>
+        </div>
+        <div class="room-card">
+          <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400" alt="Executive Suite">
+          <div class="room-info">
+            <h3>Executive Suite</h3>
+            <p>Spacious suite with a separate living area.</p>
+            <div class="room-details">
+              <span><i class="fas fa-wifi"></i> Free WiFi</span>
+              <span><i class="fas fa-snowflake"></i> AC</span>
+              <span><i class="fas fa-tv"></i> Smart TV</span>
+            </div>
+            <p class="room-price">₹27,999 <small>/ night</small></p>
+            <a href="#" class="btn btn-primary book-btn" data-room="Executive Suite" data-price="27999" data-image="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400">Book Now</a>
+          </div>
+        </div>
+        <div class="room-card">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400" alt="Presidential Suite">
+          <div class="room-info">
+            <h3>Presidential Suite</h3>
+            <p>The pinnacle of luxury and sophistication.</p>
+            <div class="room-details">
+              <span><i class="fas fa-wifi"></i> Free WiFi</span>
+              <span><i class="fas fa-snowflake"></i> AC</span>
+              <span><i class="fas fa-tv"></i> Smart TV</span>
+            </div>
+            <p class="room-price">₹49,999 <small>/ night</small></p>
+            <a href="#" class="btn btn-primary book-btn" data-room="Presidential Suite" data-price="49999" data-image="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities -->
+  <section id="amenities" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Amenities</h2>
+        <p>World-class facilities for an unforgettable stay</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item">
+          <i class="fas fa-swimmer"></i>
+          <h3>Infinity Pool</h3>
+          <p>Take a dip in our stunning rooftop infinity pool with panoramic views.</p>
+        </div>
+        <div class="amenity-item">
+          <i class="fas fa-spa"></i>
+          <h3>Spa & Wellness</h3>
+          <p>Rejuvenate your senses with our premium spa treatments and therapies.</p>
+        </div>
+        <div class="amenity-item">
+          <i class="fas fa-dumbbell"></i>
+          <h3>Fitness Center</h3>
+          <p>Stay fit with state-of-the-art equipment and personal training sessions.</p>
+        </div>
+        <div class="amenity-item">
+          <i class="fas fa-utensils"></i>
+          <h3>Fine Dining</h3>
+          <p>Savor exquisite cuisine crafted by world-renowned chefs.</p>
+        </div>
+        <div class="amenity-item">
+          <i class="fas fa-champagne-glasses"></i>
+          <h3>Rooftop Bar</h3>
+          <p>Enjoy handcrafted cocktails with breathtaking sunset views.</p>
+        </div>
+        <div class="amenity-item">
+          <i class="fas fa-concierge-bell"></i>
+          <h3>24/7 Concierge</h3>
+          <p>Our dedicated team is available around the clock to serve you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section bg-light">
+    <div class="container">
+      <div class="section-title">
+        <h2>What Our Guests Say</h2>
+        <p>Hear from those who have experienced The Grand Vista</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"An absolutely magnificent experience. The attention to detail and warmth of the staff made our anniversary truly unforgettable."</p>
+          <h4>- Sarah & Michael</h4>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"The Presidential Suite exceeded every expectation. The views, the service, the dining — perfection at every level."</p>
+          <h4>- James T.</h4>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"Business travel has never been this enjoyable. The conference facilities are top-notch and the spa is a welcome retreat after meetings."</p>
+          <h4>- Lisa K.</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>123 Luxury Avenue, Beverly Hills, CA 90210</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <p>+1 (555) 123-4567</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>reservations@grandvista.com</p>
+          </div>
+          <div class="contact-social">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <input type="text" placeholder="Subject">
+          <textarea rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <h2>Book Your Stay</h2>
+      <p id="modal-room-info"></p>
+      <form id="booking-form">
+        <input type="hidden" id="room-name" value="">
+        <input type="hidden" id="room-price" value="">
+        <div class="form-row">
+          <input type="text" placeholder="Full Name" id="guest-name" required>
+          <input type="email" placeholder="Email Address" id="guest-email" required>
+        </div>
+        <div class="form-row">
+          <input type="tel" placeholder="Phone Number" id="guest-phone" required>
+          <input type="text" placeholder="City" id="guest-city">
+        </div>
+        <div class="form-row">
+          <input type="date" id="check-in" required>
+          <input type="date" id="check-out" required>
+        </div>
+        <button type="submit" class="btn btn-primary" id="pay-btn">
+          <i class="fas fa-lock"></i> Pay ₹<span id="pay-amount">0</span>
+        </button>
+        <p class="modal-note"><i class="fas fa-shield-alt"></i> Secure payment via Razorpay</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal modal-success">
+      <div class="success-icon">&#10003;</div>
+      <h2>Payment Successful!</h2>
+      <p>Your booking at <strong id="success-room"></strong> is confirmed.</p>
+      <p id="success-details"></p>
+      <p id="success-payment-id"></p>
+      <a href="#" class="btn btn-primary" id="success-close">Done</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>The Grand Vista</h3>
+          <p>Timeless luxury, unforgettable experiences. Your home away from home.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Room Service</a></li>
+            <li><a href="#">Airport Shuttle</a></li>
+            <li><a href="#">Laundry</a></li>
+            <li><a href="#">Event Planning</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Newsletter</h4>
+          <p>Subscribe for exclusive offers.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your Email" required>
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Grand Vista. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
