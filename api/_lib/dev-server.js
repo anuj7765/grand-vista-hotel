@@ -8,6 +8,9 @@ const routes = {
   'GET /api/bookings': require('../bookings.js'),
   'POST /api/bookings': require('../bookings.js'),
   'POST /api/contact': require('../contact.js'),
+  'POST /api/auth/login': require('../auth/login.js'),
+  'POST /api/auth/register': require('../auth/register.js'),
+  'GET /api/auth/me': require('../auth/me.js'),
 };
 
 function parseBody(req) {

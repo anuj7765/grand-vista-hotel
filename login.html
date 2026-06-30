@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - The Grand Vista</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js"></script>
+</head>
+<body class="auth-page">
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <a href="/" class="auth-logo">The Grand Vista</a>
+        <p>Admin Portal</p>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <div class="auth-alert" id="auth-alert" style="display:none"></div>
+
+        <div class="auth-field">
+          <label for="email"><i class="fas fa-envelope"></i> Email</label>
+          <input type="email" id="email" placeholder="admin@example.com" required>
+        </div>
+
+        <div class="auth-field">
+          <label for="password"><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary auth-btn" id="login-btn">
+          <span id="login-text">Sign In</span>
+          <span id="login-spinner" style="display:none"><i class="fas fa-spinner fa-spin"></i> Signing in...</span>
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        <a href="/"><i class="fas fa-arrow-left"></i> Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

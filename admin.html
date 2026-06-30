@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - The Grand Vista</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js"></script>
+</head>
+<body class="admin-page">
+  <header class="admin-header">
+    <div class="container">
+      <h1><a href="/" style="color:#fff;text-decoration:none">The Grand Vista</a></h1>
+      <div class="admin-user">
+        <span id="admin-name"></span>
+        <button onclick="logout()">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-content">
+    <div class="container">
+      <div class="admin-stats">
+        <div class="stat-card">
+          <h3>Total Bookings</h3>
+          <div class="stat-number" id="stat-total">—</div>
+        </div>
+        <div class="stat-card">
+          <h3>Paid</h3>
+          <div class="stat-number" id="stat-paid">—</div>
+        </div>
+        <div class="stat-card">
+          <h3>Pending</h3>
+          <div class="stat-number" id="stat-pending">—</div>
+        </div>
+      </div>
+
+      <div class="admin-bookings">
+        <h2><i class="fas fa-calendar-check"></i> All Bookings</h2>
+        <div id="bookings-list">
+          <div class="bookings-empty">
+            <i class="fas fa-inbox"></i>
+            <p>No bookings yet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -37,6 +37,9 @@ loadRoute('POST', '/api/verify-payment', require('./api/verify-payment.js'));
 loadRoute('GET', '/api/bookings', require('./api/bookings.js'));
 loadRoute('POST', '/api/bookings', require('./api/bookings.js'));
 loadRoute('POST', '/api/contact', require('./api/contact.js'));
+loadRoute('POST', '/api/auth/login', require('./api/auth/login.js'));
+loadRoute('POST', '/api/auth/register', require('./api/auth/register.js'));
+loadRoute('GET', '/api/auth/me', require('./api/auth/me.js'));
 
 function parseBody(req) {
   return new Promise(resolve => {
