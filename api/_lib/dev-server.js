@@ -2,7 +2,7 @@ const http = require('http');
 const { URL } = require('url');
 
 const routes = {
-  'GET /api': require('../__init__.js'),
+  'GET /api': require('../index.js'),
   'POST /api/create-order': require('../create-order.js'),
   'POST /api/verify-payment': require('../verify-payment.js'),
   'GET /api/bookings': require('../bookings.js'),
