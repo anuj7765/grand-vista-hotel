@@ -38,13 +38,45 @@ window.addEventListener('scroll', () => {
   });
 });
 
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+// --- Contact Form ---
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  alert('Thank you! We will get back to you shortly.');
-  this.reset();
+  const form = this;
+  const btn = form.querySelector('button');
+  const originalText = btn.textContent;
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(CONFIG.API_BASE_URL + '/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: form.querySelector('input[placeholder="Your Name"]').value,
+        email: form.querySelector('input[placeholder="Your Email"]').value,
+        subject: form.querySelector('input[placeholder="Subject"]').value,
+        message: form.querySelector('textarea').value,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert(data.message || 'Thank you! We will get back to you shortly.');
+      form.reset();
+    } else {
+      alert(data.error || 'Something went wrong. Please try again.');
+    }
+  } catch (err) {
+    alert('Network error. Please check your connection and try again.');
+  } finally {
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }
 });
 
-// --- Razorpay Booking ---
+// --- Booking Modal ---
 const bookingModal = document.getElementById('booking-modal');
 const successModal = document.getElementById('success-modal');
 const modalClose = document.getElementById('modal-close');
@@ -114,7 +146,8 @@ function formatDate(dateStr) {
   return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
 }
 
-bookingForm.addEventListener('submit', function(e) {
+// --- Booking Submit with Backend ---
+bookingForm.addEventListener('submit', async function(e) {
   e.preventDefault();
 
   const name = document.getElementById('guest-name').value.trim();
@@ -124,7 +157,7 @@ bookingForm.addEventListener('submit', function(e) {
   const checkIn = document.getElementById('check-in').value;
   const checkOut = document.getElementById('check-out').value;
   const room = roomNameInput.value;
-  const price = Number(roomPriceInput.value);
+  const pricePerNight = Number(roomPriceInput.value);
 
   if (!checkIn || !checkOut) {
     alert('Please select check-in and check-out dates.');
@@ -136,31 +169,89 @@ bookingForm.addEventListener('submit', function(e) {
     return;
   }
 
+  if (pricePerNight === 0) {
+    alert('Please contact us for pricing of this room.');
+    return;
+  }
+
   const nights = Math.ceil((new Date(checkOut) - new Date(checkIn)) / (1000 * 60 * 60 * 24));
-  const total = price * nights;
+  const total = pricePerNight * nights;
   payAmount.textContent = total.toLocaleString('en-IN');
 
-  const options = {
-    key: RAZORPAY_CONFIG.key_id,
-    amount: total * 100,
-    currency: RAZORPAY_CONFIG.currency,
-    name: RAZORPAY_CONFIG.name,
-    description: `${room} - ${nights} night(s)`,
-    image: RAZORPAY_CONFIG.image,
-    prefill: { name, email, contact: phone },
-    theme: RAZORPAY_CONFIG.theme,
-    handler: function(response) {
-      const detailStr = `${formatDate(checkIn)} to ${formatDate(checkOut)}, ${nights} night(s)`;
-      openSuccessModal(room, response.razorpay_payment_id, detailStr);
-      closeBookingModal();
-    },
-    modal: {
-      ondismiss: function() {
-        // user closed Razorpay modal
-      }
-    }
-  };
+  const payBtn = document.getElementById('pay-btn');
+  payBtn.textContent = 'Processing...';
+  payBtn.disabled = true;
 
-  const rzp = new Razorpay(options);
-  rzp.open();
+  try {
+    const orderRes = await fetch(CONFIG.API_BASE_URL + '/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        room,
+        guestName: name,
+        guestEmail: email,
+        guestPhone: phone,
+        guestCity: city,
+        checkIn,
+        checkOut,
+        nights,
+        amount: total,
+      }),
+    });
+
+    const orderData = await orderRes.json();
+
+    if (!orderRes.ok) {
+      alert(orderData.error || 'Failed to create order. Please try again.');
+      payBtn.innerHTML = `<i class="fas fa-lock"></i> Pay ₹${total.toLocaleString('en-IN')}`;
+      payBtn.disabled = false;
+      return;
+    }
+
+    const options = {
+      key: CONFIG.RAZORPAY.key_id,
+      amount: orderData.amount,
+      currency: orderData.currency,
+      name: CONFIG.RAZORPAY.name,
+      description: `${room} - ${nights} night(s)`,
+      image: CONFIG.RAZORPAY.image,
+      order_id: orderData.orderId,
+      prefill: { name, email, contact: phone },
+      theme: CONFIG.RAZORPAY.theme,
+      handler: async function(response) {
+        const verifyRes = await fetch(CONFIG.API_BASE_URL + '/verify-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          }),
+        });
+
+        const verifyData = await verifyRes.json();
+
+        if (verifyRes.ok && verifyData.verified) {
+          const detailStr = `${formatDate(checkIn)} to ${formatDate(checkOut)}, ${nights} night(s)`;
+          openSuccessModal(room, response.razorpay_payment_id, detailStr);
+          closeBookingModal();
+        } else {
+          alert('Payment verification failed. Please contact support.');
+        }
+      },
+      modal: {
+        ondismiss: function() {
+          payBtn.innerHTML = `<i class="fas fa-lock"></i> Pay ₹${total.toLocaleString('en-IN')}`;
+          payBtn.disabled = false;
+        }
+      }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+  } catch (err) {
+    alert('Network error. Please try again.');
+    payBtn.innerHTML = `<i class="fas fa-lock"></i> Pay ₹${total.toLocaleString('en-IN')}`;
+    payBtn.disabled = false;
+  }
 });

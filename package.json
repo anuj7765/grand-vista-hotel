@@ -1,0 +1,15 @@
+{
+  "name": "grand-vista-hotel",
+  "version": "1.0.0",
+  "description": "The Grand Vista - Hotel Booking Backend",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "mongoose": "^8.0.0",
+    "razorpay": "^2.9.0",
+    "cors": "^2.8.5",
+    "nodemailer": "^6.9.0"
+  }
+}

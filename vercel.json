@@ -2,5 +2,14 @@
   "name": "grand-vista-hotel",
   "buildCommand": null,
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "functions": {
+    "api/**/*.js": {
+      "memory": 256,
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" }
+  ]
 }
